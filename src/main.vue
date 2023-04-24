@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { onMounted } from 'vue'
-import {  useRouter, RouterView } from 'vue-router'
+import { useRouter, RouterView } from 'vue-router'
 
 const router = useRouter()
 

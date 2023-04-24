@@ -13,12 +13,16 @@ export default {
         awaitingQuery.value = true
 
         const route = useRoute();
+
         word.value = route.query["word"]
         console.log("== Fetching \"" + word.value + "\"...")
         await fetch("/query?word=" + word.value).then(rawResult => {
+            console.dir(rawResult)
             rawResult.json().then((parsedResult) => {
+                consile.dir(parsedResult)
                 // Check for errors
                 if (parsedResult["success"] != true) {
+                    console.log("err")
                     queryError.value = parsedResult["error"]
                     return
                 }
@@ -30,8 +34,12 @@ export default {
                 queryResults.value = tmp
                 ////console.dir(queryResults)
                 //awaitingQuery.value = false
+            }).catch((err) => {
+                console.log("JSON ERR")
+                console.log(err)
             })
         }).catch((err) => {
+            console.log("Fetch ERR")
             console.log(err)
         })
         console.log("== Fetched.")
