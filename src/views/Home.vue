@@ -7,7 +7,9 @@ import SiteFooter from '../components/SiteFooter.vue'
 <template>
   <main>
     <SiteNav />
-    <HomeSearch />
+    <div class="mt-8 sm:mt-12 lg:mt-16">
+      <HomeSearch />
+    </div>
     <SiteFooter />
   </main>
 </template>
