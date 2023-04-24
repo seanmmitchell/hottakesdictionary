@@ -19,7 +19,7 @@ export default {
         await fetch("/query?word=" + word.value).then(rawResult => {
             console.dir(rawResult)
             rawResult.json().then((parsedResult) => {
-                consile.dir(parsedResult)
+                console.dir(parsedResult)
                 // Check for errors
                 if (parsedResult["success"] != true) {
                     console.log("err")
