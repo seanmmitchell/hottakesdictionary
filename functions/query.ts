@@ -53,7 +53,7 @@ export default {
 export const onRequest : PagesFunction = async ({ request, next, env }) => {
     let url = new URL(request.url)
     let wordQuery = url.searchParams.get("word")
-    Log(request, "New Query with word \"" + wordQuery + "\"")
+    Log(request, "Test New Query with word \"" + wordQuery + "\"")
 
     // Reject bad Input
     if (wordQuery == undefined) {
