@@ -7,7 +7,7 @@
                 <component :is="item.icon" class="h-6 w-6" aria-hidden="true" />
                 </a>
             </div>
-            <p class="mt-10 text-center text-xs leading-5 text-gray-500">&copy; {{ new Date().getFullYear() }} Sean Mitchell. Availible under MIT License at <a class="decoration-dotted" href="https://github.com/seanmmitchell/hottakesdictionary">Github</a></p>
+            <p class="mt-10 text-center text-xs leading-5 text-gray-500">&copy; {{ new Date().getFullYear() }} Sean Mitchell. Availible under MIT License at <a class="decoration-dotted" href="https://github.com/seanmmitchell/hottakesdictionary"><u>Github</u></a></p>
         </div>
     </footer>
 </template>
