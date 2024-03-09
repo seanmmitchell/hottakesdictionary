@@ -1,20 +1,31 @@
 <script>
-import { ref, computed, onMounted } from 'vue';
+import { ref, computed, onMounted, watch } from 'vue';
 import { useRoute } from 'vue-router'
 
 export default {
   setup() {
-    const word = ref('');
-    const awaitingQuery = ref(true);
-    const queryError = ref('');
-    const queryResults = ref({});
+    var word = ref('');
+    var awaitingQuery = ref(true);
+    var queryError = ref('');
+    var queryResults = ref({});
+    var route = useRoute();
 
     onMounted(async () => {
-        awaitingQuery.value = true
+        fetchQuery();
+    });
 
-        const route = useRoute();
+    watch(() => route.query.word, (newQuery, oldQuery) => {
+        if ((newQuery !== oldQuery) && (route.query.word != word.value)) {
+            fetchQuery();
+        }
+    });
 
-        word.value = route.query["word"]
+    const fetchQuery = async () => {
+        queryError.value = ''
+        queryResults.value = ''
+        word.value = route.query.word
+        awaitingQuery.value = false
+
         console.log("== Fetching \"" + word.value + "\"...")
         await fetch("/query?word=" + word.value).then(rawResult => {
             console.dir(rawResult)
@@ -32,8 +43,6 @@ export default {
                 tmp = tmp[0]
                 tmp = tmp["definitions"]
                 queryResults.value = tmp
-                ////console.dir(queryResults)
-                //awaitingQuery.value = false
             }).catch((err) => {
                 console.log("JSON ERR")
                 console.log(err)
@@ -43,8 +52,8 @@ export default {
             console.log(err)
         })
         console.log("== Fetched.")
-    });
-
+        awaitingQuery.value = true
+    };
 
     return { word, awaitingQuery, queryError, queryResults };
   },
