@@ -1,0 +1,9 @@
+name = "hottakesdictionary"
+compatibility_date = "2024-03-10"
+
+kv_namespaces = [
+    { binding = "HTD", id = "4e2ba9e38b384a46bb01285822b6b83e", preview_id = "4e2ba9e38b384a46bb01285822b6b83e" },
+    { binding = "DICT", id = "41aa994b97054f0a9bec1a9463bf24bd", preview_id = "41aa994b97054f0a9bec1a9463bf24bd" }
+]
+
+ai = { binding = "AI" }
